@@ -21,7 +21,7 @@ The app aims to solve the problem of complex fitness trackers by offering a "set
 ### Setup and Running
 1. **Clone or navigate to the project directory**:
    ```powershell
-   cd d:\Memo\Project_Flutter\fitness_app
+   cd <path>
    ```
 2. **Fetch dependencies**:
    ```powershell
@@ -33,7 +33,7 @@ The app aims to solve the problem of complex fitness trackers by offering a "set
    ```
 4. **Launch an emulator**:
    ```powershell
-   flutter emulators --launch Medium_Phone_API_36.0
+   flutter emulators --launch <emulator_id>
    ```
 5. **Run the application**:
    ```powershell
