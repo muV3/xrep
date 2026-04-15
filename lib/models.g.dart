@@ -55,7 +55,7 @@ class ExerciseAdapter extends TypeAdapter<Exercise> {
     };
     return Exercise(
       name: fields[0] as String,
-      sets: (fields[1] as List?)?.cast<int>(),
+      sets: (fields[1] as List?)?.cast<WorkoutSet>(),
     );
   }
 
@@ -76,6 +76,82 @@ class ExerciseAdapter extends TypeAdapter<Exercise> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ExerciseAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class WorkoutSetAdapter extends TypeAdapter<WorkoutSet> {
+  @override
+  final int typeId = 2;
+
+  @override
+  WorkoutSet read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return WorkoutSet(
+      reps: fields[0] as int,
+      weight: fields[1] as double,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, WorkoutSet obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.reps)
+      ..writeByte(1)
+      ..write(obj.weight);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is WorkoutSetAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class WeightUnitAdapter extends TypeAdapter<WeightUnit> {
+  @override
+  final int typeId = 3;
+
+  @override
+  WeightUnit read(BinaryReader reader) {
+    switch (reader.readByte()) {
+      case 0:
+        return WeightUnit.kg;
+      case 1:
+        return WeightUnit.lb;
+      default:
+        return WeightUnit.kg;
+    }
+  }
+
+  @override
+  void write(BinaryWriter writer, WeightUnit obj) {
+    switch (obj) {
+      case WeightUnit.kg:
+        writer.writeByte(0);
+        break;
+      case WeightUnit.lb:
+        writer.writeByte(1);
+        break;
+    }
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is WeightUnitAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
