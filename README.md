@@ -3,14 +3,13 @@
 **xRep** is a premium, minimalist mobile fitness tracking application built with Flutter. It is designed to provide a high-performance, distraction-free environment for logging workouts, exercises, and sets.
 
 ## Purpose
-The app aims to solve the problem of complex fitness trackers by offering a "set-first" approach. Users can quickly create workouts, add specific exercises, and track repetitions for every set. With built-in persistence, every rep is saved automatically, allowing users to focus entirely on their training.
+The app aims to provide an easy to use and visually appealing workout tracking environment. Users can create workouts, add exercises to created workouts and keep track of repetitions for every set.
 
 ## Features
-- **Modern Dark UI**: A sleek, premium aesthetic designed for low-light gym environments.
-- **Dynamic Workout Creation**: Effortlessly create and name your own workout routines.
+- **Modern UI**: Easy to use and intuitive interface.
+- **Dynamic Workout Creation**: Effortlessly create and name your own workouts.
 - **Exercise Management**: Add up to 10 exercises per workout with individual set tracking.
-- **Instant Persistence**: Powered by **Hive**, a lightweight and blazing-fast key-value database.
-- **Premium Typography**: Uses the **Outfit** font for a clean, professional look.
+- **Local Data Persistence**: Utilizes **Hive** to keep your data locally.
 
 ## How to Run the App
 
